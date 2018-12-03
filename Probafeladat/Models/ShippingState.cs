@@ -13,5 +13,11 @@ namespace Probafeladat.Models
         [Required]
         [StringLength(120)]
         public string State { get; set; }
+
+        /// <summary>
+        /// Sets where this action is in the delivery queue
+        /// </summary>
+        [Required]
+        public int Sequence { get; set; }
     }
 }
