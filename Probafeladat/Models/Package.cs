@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -18,5 +19,7 @@ namespace Probafeladat.Models
 
         [Required]
         public int ShippingStateID { get; set; }
+
+        public virtual IdentityUser User { get; set; }
     }
 }

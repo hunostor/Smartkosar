@@ -1,10 +1,12 @@
 ﻿using System;
+using CoreApp.Data.Seed.SQL;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Probafeladat.Data.Seed.SQL;
 
 namespace Probafeladat.Migrations
 {
-    public partial class CreatePackageFor : Migration
+    public partial class JoinUserToPackage : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -176,7 +178,8 @@ namespace Probafeladat.Migrations
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Identifier = table.Column<string>(maxLength: 8, nullable: false),
-                    ShippingStateID = table.Column<int>(nullable: false)
+                    ShippingStateID = table.Column<int>(nullable: false),
+                    UserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -187,6 +190,12 @@ namespace Probafeladat.Migrations
                         principalTable: "ShippingStates",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Packages_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
@@ -203,58 +212,58 @@ namespace Probafeladat.Migrations
 
             migrationBuilder.InsertData(
                 table: "Packages",
-                columns: new[] { "ID", "Identifier", "ShippingStateID" },
+                columns: new[] { "ID", "Identifier", "ShippingStateID", "UserId" },
                 values: new object[,]
                 {
-                    { 16, "OWKZ2576", 1 },
-                    { 10, "PSTA6722", 4 },
-                    { 11, "DVSK7838", 4 },
-                    { 15, "MIGH7483", 4 },
-                    { 21, "KVII7154", 4 },
-                    { 22, "WFDL1124", 4 },
-                    { 23, "VEVR8454", 4 },
-                    { 24, "DHZC6098", 4 },
-                    { 28, "BGYC1146", 4 },
-                    { 29, "IIFT2806", 4 },
-                    { 31, "VQFZ9000", 4 },
-                    { 34, "UTRC9260", 4 },
-                    { 36, "PBLY7456", 4 },
-                    { 37, "XBJF5397", 4 },
-                    { 39, "TPHY8046", 4 },
-                    { 3, "ILON3559", 5 },
-                    { 5, "HQKE2973", 5 },
-                    { 13, "EHNP8661", 5 },
-                    { 17, "PCBW7104", 5 },
-                    { 26, "OGEQ5290", 5 },
-                    { 30, "LIGO5374", 5 },
-                    { 32, "PFSY1303", 5 },
-                    { 2, "ZYJP4301", 4 },
-                    { 41, "SCBO4229", 5 },
-                    { 44, "JQVL7840", 3 },
-                    { 38, "CJHI9707", 3 },
-                    { 18, "HPGF3997", 1 },
-                    { 19, "SZWW9784", 1 },
-                    { 25, "VSXG9837", 1 },
-                    { 27, "QYXN4120", 1 },
-                    { 35, "YUBM2519", 1 },
-                    { 40, "ISSO1171", 1 },
-                    { 45, "WRHS6589", 1 },
-                    { 47, "TOAI8869", 1 },
-                    { 48, "SOQH1004", 1 },
-                    { 6, "WSNH4664", 2 },
-                    { 7, "XAQH8754", 2 },
-                    { 8, "NVNU1033", 2 },
-                    { 9, "VVMN5186", 2 },
-                    { 12, "CBAG6330", 2 },
-                    { 14, "BMQC3933", 2 },
-                    { 33, "UPYW1386", 2 },
-                    { 46, "AIBH5380", 2 },
-                    { 49, "MLSD2944", 2 },
-                    { 1, "BMQX3552", 3 },
-                    { 4, "PJXJ7450", 3 },
-                    { 20, "AAMI9385", 3 },
-                    { 43, "YPGW1026", 3 },
-                    { 42, "LWXF9590", 5 }
+                    { 3, "OOOX6962", 1, null },
+                    { 48, "KLAI9482", 3, null },
+                    { 5, "TQFG1670", 4, null },
+                    { 9, "JWQE3673", 4, null },
+                    { 17, "XXHB5194", 4, null },
+                    { 27, "IGAN8911", 4, null },
+                    { 30, "SMLE7509", 4, null },
+                    { 38, "GKZI8174", 4, null },
+                    { 41, "AQET4445", 4, null },
+                    { 42, "ZVGS6497", 4, null },
+                    { 45, "WPNR7777", 4, null },
+                    { 2, "DSZK4938", 5, null },
+                    { 6, "ONBP9447", 5, null },
+                    { 10, "AYDX9669", 5, null },
+                    { 11, "HWQG8867", 5, null },
+                    { 15, "CJFJ6168", 5, null },
+                    { 18, "XUBE6336", 5, null },
+                    { 22, "HXHU7581", 5, null },
+                    { 28, "SPQC7784", 5, null },
+                    { 34, "OVGN4250", 5, null },
+                    { 35, "ORFO1748", 5, null },
+                    { 39, "DQZA6697", 5, null },
+                    { 44, "WGWO4839", 3, null },
+                    { 43, "CEZT3471", 5, null },
+                    { 40, "NQDJ3754", 3, null },
+                    { 33, "CQBC5530", 3, null },
+                    { 4, "PSEA5414", 1, null },
+                    { 23, "BZBF7933", 1, null },
+                    { 26, "OMTU4187", 1, null },
+                    { 29, "KVVW3451", 1, null },
+                    { 49, "XTJE5492", 1, null },
+                    { 13, "OHIQ8948", 2, null },
+                    { 14, "BNYR8994", 2, null },
+                    { 24, "DYUF9925", 2, null },
+                    { 31, "ENFW3273", 2, null },
+                    { 36, "QDOG4306", 2, null },
+                    { 46, "FCNT4344", 2, null },
+                    { 1, "ZQXT6213", 3, null },
+                    { 7, "DEQH4567", 3, null },
+                    { 8, "DEZG7316", 3, null },
+                    { 12, "UZQP8086", 3, null },
+                    { 16, "VGFR1118", 3, null },
+                    { 19, "JJBU8622", 3, null },
+                    { 20, "APZK2256", 3, null },
+                    { 21, "SKKQ7933", 3, null },
+                    { 25, "YAKT6976", 3, null },
+                    { 32, "FGQA8695", 3, null },
+                    { 37, "MVIK8823", 3, null },
+                    { 47, "IMAG4241", 5, null }
                 });
 
             migrationBuilder.CreateIndex(
@@ -300,6 +309,16 @@ namespace Probafeladat.Migrations
                 name: "IX_Packages_ShippingStateID",
                 table: "Packages",
                 column: "ShippingStateID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Packages_UserId",
+                table: "Packages",
+                column: "UserId");
+
+            AddIdentityRoles.RunSQLScript(migrationBuilder);
+            AddUsers.RunSQLScript(migrationBuilder);
+            IdentityUsersGoingToAdmin.RunSQLScript(migrationBuilder);
+            JoinIdentityUserToPackages.Join(migrationBuilder);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -326,10 +345,10 @@ namespace Probafeladat.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "ShippingStates");
 
             migrationBuilder.DropTable(
-                name: "ShippingStates");
+                name: "AspNetUsers");
         }
     }
 }

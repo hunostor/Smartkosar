@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 using Probafeladat.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Probafeladat.Models;
 
 namespace Probafeladat
 {

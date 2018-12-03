@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Probafeladat.Data.Seed;
@@ -23,8 +24,8 @@ namespace Probafeladat.Data
             ShippingStates states = new ShippingStates();
             states.Create(builder);
 
-            AddPackages addPackages = new AddPackages();
-            addPackages.Create(builder);
+            AddPackages addPackages = new AddPackages(this);
+            addPackages.Create(builder);           
 
             base.OnModelCreating(builder);
         }

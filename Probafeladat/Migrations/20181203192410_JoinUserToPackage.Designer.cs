@@ -10,8 +10,8 @@ using Probafeladat.Data;
 namespace Probafeladat.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20181203135127_CreatePackageFor")]
-    partial class CreatePackageFor
+    [Migration("20181203192410_JoinUserToPackage")]
+    partial class JoinUserToPackage
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -198,62 +198,66 @@ namespace Probafeladat.Migrations
 
                     b.Property<int>("ShippingStateID");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("ID");
 
                     b.HasIndex("ShippingStateID");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("Packages");
 
                     b.HasData(
-                        new { ID = 1, Identifier = "BMQX3552", ShippingStateID = 3 },
-                        new { ID = 2, Identifier = "ZYJP4301", ShippingStateID = 4 },
-                        new { ID = 3, Identifier = "ILON3559", ShippingStateID = 5 },
-                        new { ID = 4, Identifier = "PJXJ7450", ShippingStateID = 3 },
-                        new { ID = 5, Identifier = "HQKE2973", ShippingStateID = 5 },
-                        new { ID = 6, Identifier = "WSNH4664", ShippingStateID = 2 },
-                        new { ID = 7, Identifier = "XAQH8754", ShippingStateID = 2 },
-                        new { ID = 8, Identifier = "NVNU1033", ShippingStateID = 2 },
-                        new { ID = 9, Identifier = "VVMN5186", ShippingStateID = 2 },
-                        new { ID = 10, Identifier = "PSTA6722", ShippingStateID = 4 },
-                        new { ID = 11, Identifier = "DVSK7838", ShippingStateID = 4 },
-                        new { ID = 12, Identifier = "CBAG6330", ShippingStateID = 2 },
-                        new { ID = 13, Identifier = "EHNP8661", ShippingStateID = 5 },
-                        new { ID = 14, Identifier = "BMQC3933", ShippingStateID = 2 },
-                        new { ID = 15, Identifier = "MIGH7483", ShippingStateID = 4 },
-                        new { ID = 16, Identifier = "OWKZ2576", ShippingStateID = 1 },
-                        new { ID = 17, Identifier = "PCBW7104", ShippingStateID = 5 },
-                        new { ID = 18, Identifier = "HPGF3997", ShippingStateID = 1 },
-                        new { ID = 19, Identifier = "SZWW9784", ShippingStateID = 1 },
-                        new { ID = 20, Identifier = "AAMI9385", ShippingStateID = 3 },
-                        new { ID = 21, Identifier = "KVII7154", ShippingStateID = 4 },
-                        new { ID = 22, Identifier = "WFDL1124", ShippingStateID = 4 },
-                        new { ID = 23, Identifier = "VEVR8454", ShippingStateID = 4 },
-                        new { ID = 24, Identifier = "DHZC6098", ShippingStateID = 4 },
-                        new { ID = 25, Identifier = "VSXG9837", ShippingStateID = 1 },
-                        new { ID = 26, Identifier = "OGEQ5290", ShippingStateID = 5 },
-                        new { ID = 27, Identifier = "QYXN4120", ShippingStateID = 1 },
-                        new { ID = 28, Identifier = "BGYC1146", ShippingStateID = 4 },
-                        new { ID = 29, Identifier = "IIFT2806", ShippingStateID = 4 },
-                        new { ID = 30, Identifier = "LIGO5374", ShippingStateID = 5 },
-                        new { ID = 31, Identifier = "VQFZ9000", ShippingStateID = 4 },
-                        new { ID = 32, Identifier = "PFSY1303", ShippingStateID = 5 },
-                        new { ID = 33, Identifier = "UPYW1386", ShippingStateID = 2 },
-                        new { ID = 34, Identifier = "UTRC9260", ShippingStateID = 4 },
-                        new { ID = 35, Identifier = "YUBM2519", ShippingStateID = 1 },
-                        new { ID = 36, Identifier = "PBLY7456", ShippingStateID = 4 },
-                        new { ID = 37, Identifier = "XBJF5397", ShippingStateID = 4 },
-                        new { ID = 38, Identifier = "CJHI9707", ShippingStateID = 3 },
-                        new { ID = 39, Identifier = "TPHY8046", ShippingStateID = 4 },
-                        new { ID = 40, Identifier = "ISSO1171", ShippingStateID = 1 },
-                        new { ID = 41, Identifier = "SCBO4229", ShippingStateID = 5 },
-                        new { ID = 42, Identifier = "LWXF9590", ShippingStateID = 5 },
-                        new { ID = 43, Identifier = "YPGW1026", ShippingStateID = 3 },
-                        new { ID = 44, Identifier = "JQVL7840", ShippingStateID = 3 },
-                        new { ID = 45, Identifier = "WRHS6589", ShippingStateID = 1 },
-                        new { ID = 46, Identifier = "AIBH5380", ShippingStateID = 2 },
-                        new { ID = 47, Identifier = "TOAI8869", ShippingStateID = 1 },
-                        new { ID = 48, Identifier = "SOQH1004", ShippingStateID = 1 },
-                        new { ID = 49, Identifier = "MLSD2944", ShippingStateID = 2 }
+                        new { ID = 1, Identifier = "ZQXT6213", ShippingStateID = 3 },
+                        new { ID = 2, Identifier = "DSZK4938", ShippingStateID = 5 },
+                        new { ID = 3, Identifier = "OOOX6962", ShippingStateID = 1 },
+                        new { ID = 4, Identifier = "PSEA5414", ShippingStateID = 1 },
+                        new { ID = 5, Identifier = "TQFG1670", ShippingStateID = 4 },
+                        new { ID = 6, Identifier = "ONBP9447", ShippingStateID = 5 },
+                        new { ID = 7, Identifier = "DEQH4567", ShippingStateID = 3 },
+                        new { ID = 8, Identifier = "DEZG7316", ShippingStateID = 3 },
+                        new { ID = 9, Identifier = "JWQE3673", ShippingStateID = 4 },
+                        new { ID = 10, Identifier = "AYDX9669", ShippingStateID = 5 },
+                        new { ID = 11, Identifier = "HWQG8867", ShippingStateID = 5 },
+                        new { ID = 12, Identifier = "UZQP8086", ShippingStateID = 3 },
+                        new { ID = 13, Identifier = "OHIQ8948", ShippingStateID = 2 },
+                        new { ID = 14, Identifier = "BNYR8994", ShippingStateID = 2 },
+                        new { ID = 15, Identifier = "CJFJ6168", ShippingStateID = 5 },
+                        new { ID = 16, Identifier = "VGFR1118", ShippingStateID = 3 },
+                        new { ID = 17, Identifier = "XXHB5194", ShippingStateID = 4 },
+                        new { ID = 18, Identifier = "XUBE6336", ShippingStateID = 5 },
+                        new { ID = 19, Identifier = "JJBU8622", ShippingStateID = 3 },
+                        new { ID = 20, Identifier = "APZK2256", ShippingStateID = 3 },
+                        new { ID = 21, Identifier = "SKKQ7933", ShippingStateID = 3 },
+                        new { ID = 22, Identifier = "HXHU7581", ShippingStateID = 5 },
+                        new { ID = 23, Identifier = "BZBF7933", ShippingStateID = 1 },
+                        new { ID = 24, Identifier = "DYUF9925", ShippingStateID = 2 },
+                        new { ID = 25, Identifier = "YAKT6976", ShippingStateID = 3 },
+                        new { ID = 26, Identifier = "OMTU4187", ShippingStateID = 1 },
+                        new { ID = 27, Identifier = "IGAN8911", ShippingStateID = 4 },
+                        new { ID = 28, Identifier = "SPQC7784", ShippingStateID = 5 },
+                        new { ID = 29, Identifier = "KVVW3451", ShippingStateID = 1 },
+                        new { ID = 30, Identifier = "SMLE7509", ShippingStateID = 4 },
+                        new { ID = 31, Identifier = "ENFW3273", ShippingStateID = 2 },
+                        new { ID = 32, Identifier = "FGQA8695", ShippingStateID = 3 },
+                        new { ID = 33, Identifier = "CQBC5530", ShippingStateID = 3 },
+                        new { ID = 34, Identifier = "OVGN4250", ShippingStateID = 5 },
+                        new { ID = 35, Identifier = "ORFO1748", ShippingStateID = 5 },
+                        new { ID = 36, Identifier = "QDOG4306", ShippingStateID = 2 },
+                        new { ID = 37, Identifier = "MVIK8823", ShippingStateID = 3 },
+                        new { ID = 38, Identifier = "GKZI8174", ShippingStateID = 4 },
+                        new { ID = 39, Identifier = "DQZA6697", ShippingStateID = 5 },
+                        new { ID = 40, Identifier = "NQDJ3754", ShippingStateID = 3 },
+                        new { ID = 41, Identifier = "AQET4445", ShippingStateID = 4 },
+                        new { ID = 42, Identifier = "ZVGS6497", ShippingStateID = 4 },
+                        new { ID = 43, Identifier = "CEZT3471", ShippingStateID = 5 },
+                        new { ID = 44, Identifier = "WGWO4839", ShippingStateID = 3 },
+                        new { ID = 45, Identifier = "WPNR7777", ShippingStateID = 4 },
+                        new { ID = 46, Identifier = "FCNT4344", ShippingStateID = 2 },
+                        new { ID = 47, Identifier = "IMAG4241", ShippingStateID = 5 },
+                        new { ID = 48, Identifier = "KLAI9482", ShippingStateID = 3 },
+                        new { ID = 49, Identifier = "XTJE5492", ShippingStateID = 1 }
                     );
                 });
 
@@ -341,6 +345,10 @@ namespace Probafeladat.Migrations
                         .WithMany()
                         .HasForeignKey("ShippingStateID")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 #pragma warning restore 612, 618
         }
