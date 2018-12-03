@@ -1,11 +1,10 @@
 ﻿using System;
-using CoreApp.Data.Seed.SQL;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Probafeladat.Data.Migrations
+namespace Probafeladat.Migrations
 {
-    public partial class CreateIdentitySchema : Migration
+    public partial class CreatePackageFor : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -46,6 +45,22 @@ namespace Probafeladat.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ShippingStates",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    State = table.Column<string>(maxLength: 150, nullable: false),
+                    Sequence = table.Column<int>(nullable: false),
+                    Description = table.Column<string>(maxLength: 1000, nullable: false),
+                    Short = table.Column<string>(maxLength: 10, nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ShippingStates", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -154,6 +169,94 @@ namespace Probafeladat.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Packages",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Identifier = table.Column<string>(maxLength: 8, nullable: false),
+                    ShippingStateID = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Packages", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Packages_ShippingStates_ShippingStateID",
+                        column: x => x.ShippingStateID,
+                        principalTable: "ShippingStates",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "ShippingStates",
+                columns: new[] { "ID", "Description", "Sequence", "Short", "State" },
+                values: new object[,]
+                {
+                    { 1, "Csomag a feladónál. Futárra vár.", 1, "WfpU", "Waiting for Pick Up" },
+                    { 2, "Csomag a futárnál. Depóba tart.", 2, "PU", "Picked Up" },
+                    { 3, "Depóban van. Kiszállításra vár", 3, "ID", "In Depot" },
+                    { 4, "Kiszállítás alatt áll. Célba tart.", 4, "OD", "On Delivery" },
+                    { 5, "Kiszállítva", 5, "DD", "Delivered" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Packages",
+                columns: new[] { "ID", "Identifier", "ShippingStateID" },
+                values: new object[,]
+                {
+                    { 16, "OWKZ2576", 1 },
+                    { 10, "PSTA6722", 4 },
+                    { 11, "DVSK7838", 4 },
+                    { 15, "MIGH7483", 4 },
+                    { 21, "KVII7154", 4 },
+                    { 22, "WFDL1124", 4 },
+                    { 23, "VEVR8454", 4 },
+                    { 24, "DHZC6098", 4 },
+                    { 28, "BGYC1146", 4 },
+                    { 29, "IIFT2806", 4 },
+                    { 31, "VQFZ9000", 4 },
+                    { 34, "UTRC9260", 4 },
+                    { 36, "PBLY7456", 4 },
+                    { 37, "XBJF5397", 4 },
+                    { 39, "TPHY8046", 4 },
+                    { 3, "ILON3559", 5 },
+                    { 5, "HQKE2973", 5 },
+                    { 13, "EHNP8661", 5 },
+                    { 17, "PCBW7104", 5 },
+                    { 26, "OGEQ5290", 5 },
+                    { 30, "LIGO5374", 5 },
+                    { 32, "PFSY1303", 5 },
+                    { 2, "ZYJP4301", 4 },
+                    { 41, "SCBO4229", 5 },
+                    { 44, "JQVL7840", 3 },
+                    { 38, "CJHI9707", 3 },
+                    { 18, "HPGF3997", 1 },
+                    { 19, "SZWW9784", 1 },
+                    { 25, "VSXG9837", 1 },
+                    { 27, "QYXN4120", 1 },
+                    { 35, "YUBM2519", 1 },
+                    { 40, "ISSO1171", 1 },
+                    { 45, "WRHS6589", 1 },
+                    { 47, "TOAI8869", 1 },
+                    { 48, "SOQH1004", 1 },
+                    { 6, "WSNH4664", 2 },
+                    { 7, "XAQH8754", 2 },
+                    { 8, "NVNU1033", 2 },
+                    { 9, "VVMN5186", 2 },
+                    { 12, "CBAG6330", 2 },
+                    { 14, "BMQC3933", 2 },
+                    { 33, "UPYW1386", 2 },
+                    { 46, "AIBH5380", 2 },
+                    { 49, "MLSD2944", 2 },
+                    { 1, "BMQX3552", 3 },
+                    { 4, "PJXJ7450", 3 },
+                    { 20, "AAMI9385", 3 },
+                    { 43, "YPGW1026", 3 },
+                    { 42, "LWXF9590", 5 }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -193,9 +296,10 @@ namespace Probafeladat.Data.Migrations
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
 
-
-            // custom sql scripts
-            AddUsers.RunSQLScript(migrationBuilder);
+            migrationBuilder.CreateIndex(
+                name: "IX_Packages_ShippingStateID",
+                table: "Packages",
+                column: "ShippingStateID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -216,10 +320,16 @@ namespace Probafeladat.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
+                name: "Packages");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "ShippingStates");
         }
     }
 }

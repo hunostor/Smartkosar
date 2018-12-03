@@ -38,7 +38,7 @@ namespace Probafeladat.Data.Seed
                 },
                 new ShippingState()
                 {
-                    ID = 5,
+                    ID = 4,
                     State = "On Delivery",
                     Sequence = 4,
                     Short = "OD",
@@ -46,7 +46,7 @@ namespace Probafeladat.Data.Seed
                 },
                 new ShippingState()
                 {
-                    ID = 6,
+                    ID = 5,
                     State = "Delivered",
                     Sequence = 5,
                     Short = "DD",

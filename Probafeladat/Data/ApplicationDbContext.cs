@@ -23,6 +23,9 @@ namespace Probafeladat.Data
             ShippingStates states = new ShippingStates();
             states.Create(builder);
 
+            AddPackages addPackages = new AddPackages();
+            addPackages.Create(builder);
+
             base.OnModelCreating(builder);
         }
     }
