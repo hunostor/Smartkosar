@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Probafeladat.Data.Seed;
 using Probafeladat.Models;
 
 namespace Probafeladat.Data
@@ -16,5 +17,13 @@ namespace Probafeladat.Data
 
         public DbSet<Package> Packages { get; set; }
         public DbSet<ShippingState> ShippingStates { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            ShippingStates states = new ShippingStates();
+            states.Create(builder);
+
+            base.OnModelCreating(builder);
+        }
     }
 }

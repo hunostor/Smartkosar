@@ -11,7 +11,7 @@ namespace Probafeladat.Models
         public int ID { get; set; }
 
         [Required]
-        [StringLength(120)]
+        [StringLength(150)]
         public string State { get; set; }
 
         /// <summary>
@@ -19,5 +19,13 @@ namespace Probafeladat.Models
         /// </summary>
         [Required]
         public int Sequence { get; set; }
+
+        [Required]
+        [StringLength(1000)]
+        public string Description { get; set; }
+
+        [Required]
+        [StringLength(10)]
+        public string Short { get; set; }
     }
 }
