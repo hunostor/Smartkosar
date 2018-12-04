@@ -25,16 +25,16 @@ namespace Probafeladat.Controllers
 
         [HttpPost]
         [Authorize]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(string key)
-        {
-            string searchKey = string.Empty;
-            if (key != null)
+        {            
+            if (key == null)
             {
-                searchKey = key.ToUpper();
+                return View(new List<Package>());
             }
 
-            var currentUserID = _userManager.GetUserId(HttpContext.User);
-                       
+            string searchKey = key.ToUpper();
+            var currentUserID = _userManager.GetUserId(HttpContext.User);                       
             
             var applicationDbContext = _context.Packages
                 .Include(p => p.ShippingState)
