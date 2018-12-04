@@ -22,7 +22,9 @@ namespace Probafeladat.Controllers
         // GET: Packages
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Packages.Include(p => p.ShippingState);
+            var applicationDbContext = _context.Packages
+                .Include(p => p.ShippingState)
+                .Include(u => u.User);
             return View(await applicationDbContext.ToListAsync());
         }
 
