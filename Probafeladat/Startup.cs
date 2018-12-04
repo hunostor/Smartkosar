@@ -73,6 +73,12 @@ namespace Probafeladat
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
+                    name: "Search",
+                    template: "Search",
+                    defaults: new { controller = "Search", action = "Index" }
+                    );
+
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
