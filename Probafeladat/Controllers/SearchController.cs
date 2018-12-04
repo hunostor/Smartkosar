@@ -27,9 +27,15 @@ namespace Probafeladat.Controllers
         [Authorize]
         public async Task<IActionResult> Index(string key)
         {
+            string searchKey = string.Empty;
+            if (key != null)
+            {
+                searchKey = key.ToUpper();
+            }
+
             var currentUserID = _userManager.GetUserId(HttpContext.User);
                        
-            string searchKey = key.ToUpper();
+            
             var applicationDbContext = _context.Packages
                 .Include(p => p.ShippingState)
                 .Include(p => p.User)
