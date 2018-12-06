@@ -25,3 +25,11 @@ Minta felhasználók
 
 Admin felhasználó: 
 - admin@admin.hu, pass: admin123
+
+## App elérhetősége az Azure -ban
+https://probafeladat-smartkosar.azurewebsites.net/
+
+Ugyanazokkal a felhasználókkal kipróbálható.
+Ez az alkalmazás csak annyiban különbözik az itt közölttől,
+hogy pénztakarékossági okokból nem MSSQL, hanem SQLite
+adatbázis fut alatta.
