@@ -20,8 +20,8 @@ adminisztrálni a csomagokat.
 
 
 Minta felhasználók
-- felhasznalo1@gmail.com, pass: qwerty1
-- felhasznalo2@gmail.com, pass: qwerty1
+- felhasznalo1@gmail.com, pass: qwertz1
+- felhasznalo2@gmail.com, pass: qwertz1
 
 Admin felhasználó: 
 - admin@admin.hu, pass: admin123
