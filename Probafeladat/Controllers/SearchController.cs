@@ -34,8 +34,9 @@ namespace Probafeladat.Controllers
             }
 
             string searchKey = key.ToUpper();
-            var currentUserID = _userManager.GetUserId(HttpContext.User);                       
-            
+            var currentUserID = _userManager.GetUserId(HttpContext.User);
+           
+
             var applicationDbContext = _context.Packages
                 .Include(p => p.ShippingState)
                 .Include(p => p.User)

@@ -11,7 +11,7 @@ using Probafeladat.Models;
 
 namespace Probafeladat.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "masteradmin")]
     public class PackagesController : Controller
     {
         private readonly ApplicationDbContext _context;
