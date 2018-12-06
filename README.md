@@ -13,13 +13,15 @@ Ehez szükséges a lokális gépen egy standard módon telepített MSSQL Express
 
 A felhasználók mindig pontosan ugyanazokkal az adatokkal jönnek létre és a csomagok
 hozzájuk kapcsolódnak.
+A létrejövő csomagok azonosítóit viszont véletlenszerűen generálja a rendszer.
 
-## Használat
-A csomagnevek viszont véletlenszerűen generálódnak a migráció futásakor.
-Hogy ki lehessen a keresést próbálni a "/Packages" útvonal nincsen levédve
-ott az összes csomag fel van sorolva egy táblázatban, az aktuális szállítási
-állapottal és a felhasználó nevével akihez tartozik.
+Admin felhasználónak nincsennek csomagjai, viszont lehetősége van a /Admin útvonalon
+adminisztrálni a csomagokat.
+
 
 Minta felhasználók
 - felhasznalo1@gmail.com, pass: qwerty1
 - felhasznalo2@gmail.com, pass: qwerty1
+
+Admin felhasználó: 
+- admin@admin.hu, pass: admin123

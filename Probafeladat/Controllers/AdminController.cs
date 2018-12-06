@@ -12,16 +12,16 @@ using Probafeladat.Models;
 namespace Probafeladat.Controllers
 {
     [Authorize(Roles = "masteradmin")]
-    public class PackagesController : Controller
+    public class AdminController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public PackagesController(ApplicationDbContext context)
+        public AdminController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Packages
+        // GET: Admin
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Packages
@@ -30,7 +30,7 @@ namespace Probafeladat.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
-        // GET: Packages/Details/5
+        // GET: Admin/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -49,14 +49,14 @@ namespace Probafeladat.Controllers
             return View(package);
         }
 
-        // GET: Packages/Create
+        // GET: Admin/Create
         public IActionResult Create()
         {
             ViewData["ShippingStateID"] = new SelectList(_context.ShippingStates, "ID", "Description");
             return View();
         }
 
-        // POST: Packages/Create
+        // POST: Admin/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -73,7 +73,7 @@ namespace Probafeladat.Controllers
             return View(package);
         }
 
-        // GET: Packages/Edit/5
+        // GET: Admin/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -90,7 +90,7 @@ namespace Probafeladat.Controllers
             return View(package);
         }
 
-        // POST: Packages/Edit/5
+        // POST: Admin/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -126,7 +126,7 @@ namespace Probafeladat.Controllers
             return View(package);
         }
 
-        // GET: Packages/Delete/5
+        // GET: Admin/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -145,7 +145,7 @@ namespace Probafeladat.Controllers
             return View(package);
         }
 
-        // POST: Packages/Delete/5
+        // POST: Admin/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

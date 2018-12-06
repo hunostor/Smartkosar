@@ -12,7 +12,9 @@ namespace CoreApp.Data.Seed.SQL
         {
             // user set to masteradmin
             migrationBuilder.Sql($"INSERT INTO AspNetUserRoles (UserId, RoleId) VALUES" +
-                $"('28085c1c-5fd6-4022-ac3e-7e8915657e43', '28085aaa-5fd6-4022-ac3e-7e8915657e43')");
+                $"('43eebbdc-633d-4276-b363-b6b1e8de918a', '28085aaa-5fd6-4022-ac3e-7e8915657e43')," +
+                $"('28085c1c-5fd6-4022-ac3e-7e8915657e43', '28085aaa-5fd6-4022-ac3e-7e8915657e43')"
+                );
         }
     }
 }

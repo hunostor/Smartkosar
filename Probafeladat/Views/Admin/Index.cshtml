@@ -6,9 +6,9 @@
 
 <h2>Index</h2>
 
-@*<p>
+<p>
     <a asp-action="Create">Create New</a>
-</p>*@
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -18,12 +18,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.ShippingState)
             </th>
-            <th>
-                Username
-            </th>
             <th></th>
         </tr>
-    </thead> 
+    </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
@@ -32,9 +29,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.ShippingState.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User.UserName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
